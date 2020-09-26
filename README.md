@@ -1,54 +1,24 @@
-# Lumen PHP Framework (7.2.2) (Laravel Components ^7.0)
+# Lumen PHP Framework
 
-## Module Developed
+[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
+[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 
-- User Registration
-- User Login
-- Get Users List
-- Get User By Id
-- Get Current User Profile
+Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
 
-## Installation and Usage
+## Official Documentation
 
--   `git clone https://github.com/lpkapil/lumenapp.git`
--   `cd lumenapp`
--   `composer install`
--   `Edit .env file and update JWT_SECRET value`
--   `php artisan migrate`
--   `php -S localhost:8000 -t public`
+Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## API Official Documentation
+## Contributing
 
-<h4>Get all users</h4>
+Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Method: GET
-URL: localhost:8000/api/users
-Headers: 
+## Security Vulnerabilities
 
-Authroization
+If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-<h4>Get current user profile<h4>
+## License
 
-Method: GET
-URL: localhost:8000/api/profile
-
-<h4>Get User By Id</h4>
-
-Method: GET
-URL: localhost:8000/api/users/{id}
-
-<h4>Login User and Get Authorization Token</h4>
-
-Method: POST
-URL: localhost:8000/api/login
-params:
-
-email, password
-
-<h4>Register User</h4>
-
-Method: POST
-URL: localhost:8000/api/register
-params:
-
-name,email,password,password_confirmation
+The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
