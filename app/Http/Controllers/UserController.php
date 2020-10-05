@@ -36,7 +36,8 @@ class UserController extends Controller
     {   
         // if paginate then
         // User::orderByDesc('id')->paginate(1)
-         return response()->json(['users' =>  User::all()], 200);
+        //  return response()->json(['users' =>  User::all()], 200);
+         return response()->json(['users' => User::orderByDesc('id')->paginate(2)], 200);
     }
 
     /**
