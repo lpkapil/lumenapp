@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use  App\User;
 
 class UserController extends Controller
@@ -32,12 +33,41 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function allUsers()
+    public function allUsers(Request $request)
     {   
+        // $order = $request->input('order');
+        // $input = $request->all();
+        // echo "<pre>";
+        // print_r($input);
+        // echo "</pre>";
+
+        $pagination = $request->input('pagination');
+        $paginationObject = json_decode($pagination);
+        $pageSize = $paginationObject->pageSize;
+
+        $users = User::orderBy('id', 'desc');
+        
+
+        if($request->input('sortOrder') == 'ascend') {
+            $users = User::orderBy($request->input('sortField'), 'asc');
+        }
+        
+        if($request->input('sortOrder') == 'decend') {
+            $users = User::orderBy($request->input('sortField'), 'desc');
+        }
+
+        if(!empty($pagination)) {
+            $users = $users->paginate($paginationObject->pageSize);
+        } else {
+            $users = $users->paginate(5);
+        }
+
+
+
         // if paginate then
         // User::orderByDesc('id')->paginate(1)
         //  return response()->json(['users' =>  User::all()], 200);
-         return response()->json(['users' => User::orderByDesc('id')->paginate(2)], 200);
+         return response()->json(['users' => $users], 200);
     }
 
     /**

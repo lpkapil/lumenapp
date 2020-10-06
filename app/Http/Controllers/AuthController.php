@@ -64,7 +64,10 @@ class AuthController extends Controller
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        $user = User::select('id', 'name', 'email')
+            ->where('email', $request->input('email'))->first();
+
+        return $this->respondWithToken($user, $token);
     }
 
 
