@@ -35,19 +35,9 @@ class UserController extends Controller
      */
     public function allUsers(Request $request)
     {   
-        // $order = $request->input('order');
-        // $input = $request->all();
-        // echo "<pre>";
-        // print_r($input);
-        // echo "</pre>";
-
         $pagination = $request->input('pagination');
-        $paginationObject = json_decode($pagination);
-        $pageSize = $paginationObject->pageSize;
-
         $users = User::orderBy('id', 'desc');
         
-
         if($request->input('sortOrder') == 'ascend') {
             $users = User::orderBy($request->input('sortField'), 'asc');
         }
@@ -57,6 +47,8 @@ class UserController extends Controller
         }
 
         if(!empty($pagination)) {
+            $paginationObject = json_decode($pagination);
+            $pageSize = $paginationObject->pageSize;
             $users = $users->paginate($paginationObject->pageSize);
         } else {
             $users = $users->paginate(5);
